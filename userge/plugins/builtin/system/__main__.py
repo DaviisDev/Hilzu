@@ -12,9 +12,9 @@ import asyncio
 import shutil
 import time
 
-from pyrogram import Client, enums
-from pyrogram.errors import SessionPasswordNeeded, YouBlockedUser
-from pyrogram.types import User
+from hydrogram import Client, enums
+from hydrogram.errors import SessionPasswordNeeded, YouBlockedUser
+from hydrogram.types import User
 
 from userge import userge, Message, config, get_collection
 from userge.core.ext import RawClient
@@ -50,7 +50,7 @@ async def _init() -> None:
             system.DISABLED_CHATS.add(i['_id'])
 
 
-@userge.on_cmd('restart', about={
+@userge.cmd('restart', about={
     'header': "Restarts the bot and reload all plugins",
     'flags': {
         '-h': "restart hard",
@@ -82,7 +82,7 @@ async def restart_(message: Message):
         await userge.restart()
 
 
-@userge.on_cmd("shutdown", about={'header': "shutdown userge :)"}, allow_channels=False)
+@userge.cmd("shutdown", about={'header': "shutdown userge :)"}, allow_channels=False)
 async def shutdown_(message: Message) -> None:
     """ shutdown userge """
     await message.edit("`shutting down ...`")
@@ -91,7 +91,7 @@ async def shutdown_(message: Message) -> None:
     system.shutdown()
 
 
-@userge.on_cmd("die", about={
+@userge.cmd("die", about={
     'header': "set auto heroku dyno off timeout",
     'flags': {'-t': "input offline timeout in min : default to 5min"},
     'usage': "{tr}die [flags]",
@@ -131,7 +131,7 @@ async def die_(message: Message) -> None:
     system.Dynamic.RUN_DYNO_SAVER = asyncio.get_event_loop().create_task(_dyno_saver_worker())
 
 
-@userge.on_cmd("setvar", about={
+@userge.cmd("setvar", about={
     'header': "set var",
     'usage': "{tr}setvar [var_name] [var_data]",
     'examples': "{tr}setvar WORKERS 4"})
@@ -157,7 +157,7 @@ async def setvar_(message: Message) -> None:
     await system.set_env(var_name, var_data)
 
 
-@userge.on_cmd("delvar", about={
+@userge.cmd("delvar", about={
     'header': "del var",
     'usage': "{tr}delvar [var_name]",
     'examples': "{tr}delvar WORKERS"})
@@ -180,7 +180,7 @@ async def delvar_(message: Message) -> None:
     await system.del_env(var_name)
 
 
-@userge.on_cmd("getvar", about={
+@userge.cmd("getvar", about={
     'header': "get var",
     'usage': "{tr}getvar [var_name]",
     'examples': "{tr}getvar WORKERS"})
@@ -201,7 +201,7 @@ async def getvar_(message: Message) -> None:
     await message.edit(f"`var {var_name} forwarded to log channel!`", del_in=3)
 
 
-@userge.on_cmd("enhere", about={
+@userge.cmd("enhere", about={
     'header': "enable userbot in disabled chat.",
     'flags': {'-all': "Enable Userbot in all chats."},
     'usage': "{tr}enhere [chat_id | username]\n{tr}enhere -all"})
@@ -243,7 +243,7 @@ async def enable_userbot(message: Message):
         await message.err("chat_id not found!")
 
 
-@userge.on_cmd("dishere", about={
+@userge.cmd("dishere", about={
     'header': "disable userbot in current chat.",
     'flags': {'-all': "disable Userbot in all chats."},
     'usage': "{tr}dishere\n{tr}dishere [chat_id | username]\n{tr}dishere -all"})
@@ -281,7 +281,7 @@ async def disable_userbot(message: Message):
             )
 
 
-@userge.on_cmd("listdisabled", about={'header': "List all disabled chats."})
+@userge.cmd("listdisabled", about={'header': "List all disabled chats."})
 async def view_disabled_chats_(message: Message):
     """ list disabled chats """
     if system.Dynamic.DISABLED_ALL:
@@ -296,7 +296,7 @@ async def view_disabled_chats_(message: Message):
         await message.edit(out_str, del_in=0)
 
 
-@userge.on_cmd("convert_usermode", about={
+@userge.cmd("convert_usermode", about={
     'header': "convert your bot into userbot to use user mode",
     'flags': {
         '-c': "provide code",
@@ -382,7 +382,7 @@ async def convert_usermode(msg: Message):
             await msg.reply(str(error))
 
 
-@userge.on_cmd("convert_botmode", about={
+@userge.cmd("convert_botmode", about={
     'header': "convert your userbot to use bot mode",
     'usage': "{tr}convert_botmode bot_name | bot_username"}, allow_channels=False)
 async def convert_botmode(msg: Message):
@@ -421,7 +421,7 @@ async def convert_botmode(msg: Message):
         await msg.err("@botfather didn't respond in time.")
 
 
-@userge.on_cmd("sleep (\\d+)", about={
+@userge.cmd("sleep (\\d+)", about={
     'header': "sleep userge :P",
     'usage': "{tr}sleep [timeout in seconds]"}, allow_channels=False)
 async def sleep_(message: Message) -> None:

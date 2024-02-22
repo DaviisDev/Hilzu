@@ -18,7 +18,7 @@ from . import RawDecorator
 
 
 class OnCmd(RawDecorator):  # pylint: disable=missing-class-docstring
-    def on_cmd(self,
+    def cmd(self,
                command: str,
                about: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]],
                *,
@@ -47,7 +47,7 @@ class OnCmd(RawDecorator):  # pylint: disable=missing-class-docstring
         """\nDecorator for handling messages.
 
         Example:
-                @userge.on_cmd('test', about='for testing')
+                @userge.cmd('test', about='for testing')
 
         Parameters:
             command (``str``):

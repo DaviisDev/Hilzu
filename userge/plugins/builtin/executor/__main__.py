@@ -40,8 +40,8 @@ except ImportError:
 
     setsid = None
 
-from pyrogram.types.messages_and_media.message import Str
-from pyrogram import enums
+from hydrogram.types.messages_and_media.message import Str
+from hydrogram import enums
 
 from userge import userge, Message, config, pool
 from userge.utils import runcmd
@@ -77,7 +77,7 @@ def input_checker(func: Callable[[Message], Awaitable[Any]]):
     return wrapper
 
 
-@userge.on_cmd("exec", about={
+@userge.cmd("exec", about={
     'header': "run commands in exec",
     'flags': {'-r': "raw text when send as file"},
     'usage': "{tr}exec [commands]",
@@ -109,7 +109,7 @@ _KEY = '_OLD'
 _EVAL_TASKS: Dict[asyncio.Future, str] = {}
 
 
-@userge.on_cmd("eval", about={
+@userge.cmd("eval", about={
     'header': "run python code line | lines",
     'flags': {
         '-r': "raw text when send as file",
@@ -251,7 +251,7 @@ async def eval_(message: Message):
             _EVAL_TASKS.pop(future, None)
 
 
-@userge.on_cmd("term", about={
+@userge.cmd("term", about={
     'header': "run commands in shell (terminal)",
     'flags': {'-r': "raw text when send as file"},
     'usage': "{tr}term [commands]",

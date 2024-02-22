@@ -10,7 +10,7 @@
 
 from datetime import datetime
 
-from pyrogram.raw.functions import Ping
+from hydrogram.raw.functions import Ping
 
 from userge import userge, Message, logging, config, pool, get_collection
 
@@ -27,7 +27,7 @@ async def _init() -> None:
         config.Dynamic.EDIT_SLEEP_TIMEOUT = es_t['data']
 
 
-@userge.on_cmd("sdelto (\\d+)", about={
+@userge.cmd("sdelto (\\d+)", about={
     'header': "Set auto message delete timeout",
     'usage': "{tr}sdelto [timeout in seconds]",
     'examples': "{tr}sdelto 15\n{tr}sdelto 0 : for disable deletion"})
@@ -48,7 +48,7 @@ async def set_delete_timeout(message: Message):
         await message.edit("`Auto message deletion disabled!`", del_in=3)
 
 
-@userge.on_cmd("vdelto", about={'header': "View auto message delete timeout"})
+@userge.cmd("vdelto", about={'header': "View auto message delete timeout"})
 async def view_delete_timeout(message: Message):
     """ view delete timeout """
     if config.Dynamic.MSG_DELETE_TIMEOUT:
@@ -59,7 +59,7 @@ async def view_delete_timeout(message: Message):
         await message.edit("`Auto message deletion disabled!`", del_in=3)
 
 
-@userge.on_cmd("sesto (\\d+)", about={
+@userge.cmd("sesto (\\d+)", about={
     'header': "Set edit sleep timeout",
     'usage': "{tr}sesto [timeout in seconds]",
     'examples': "{tr}sesto 10"})
@@ -80,7 +80,7 @@ async def set_es_timeout(message: Message):
         f"`Set edit sleep timeout as {t_o} seconds!`", del_in=3)
 
 
-@userge.on_cmd("vesto", about={'header': "View edit sleep timeout"})
+@userge.cmd("vesto", about={'header': "View edit sleep timeout"})
 async def view_es_timeout(message: Message):
     """ view edit sleep timeout """
     await message.edit(
@@ -88,7 +88,7 @@ async def view_es_timeout(message: Message):
         del_in=5)
 
 
-@userge.on_cmd("cancel", about={
+@userge.cmd("cancel", about={
     'header': "Reply this to message you want to cancel",
     'flags': {'-a': "cancel all tasks"}})
 async def cancel_(message: Message):
@@ -107,7 +107,7 @@ async def cancel_(message: Message):
         await message.err("source not provided !", show_help=False)
 
 
-@userge.on_cmd("json", about={
+@userge.cmd("json", about={
     'header': "message object to json",
     'usage': "reply {tr}json to any message"})
 async def jsonify(message: Message):
@@ -116,7 +116,7 @@ async def jsonify(message: Message):
     await message.edit_or_send_as_file(text=msg, filename="json.txt", caption="Too Large")
 
 
-@userge.on_cmd("ping", about={
+@userge.cmd("ping", about={
     'header': "check how long it takes to ping your userbot"}, group=-1)
 async def pingme(message: Message):
     """ ping tg servers """
@@ -128,7 +128,7 @@ async def pingme(message: Message):
     await message.edit(f"𝙿𝚒𝚗𝚐 - `{m_s} ᴍs`\n𝚄𝚙𝚝𝚒𝚖𝚎 - `{userge.uptime}`")
 
 
-@userge.on_cmd("s", about={
+@userge.cmd("s", about={
     'header': "search commands or plugins",
     'flags': {'-p': "search plugin"},
     'examples': ["{tr}s wel", "{tr}s -p gdrive"]}, allow_channels=False)
@@ -154,7 +154,7 @@ async def search(message: Message):
     await message.edit(text=out, del_in=0)
 
 
-@userge.on_cmd("logs", about={
+@userge.cmd("logs", about={
     'header': "check userge logs",
     'flags': {
         '-h': "get heroku logs (default limit 100)",
@@ -191,7 +191,7 @@ _LEVELS = {
 }
 
 
-@userge.on_cmd("setlvl", about={
+@userge.cmd("setlvl", about={
     'header': "set logger level, default to info",
     'types': ['debug', 'info', 'warning', 'error', 'critical'],
     'usage': "{tr}setlvl [level]",

@@ -23,7 +23,7 @@ fi
 
 echo "[★] - Cloning Loader in \"$HOME\""
 
-git clone https://github.com/fnixdev/Loader.git
+git clone https://github.com/daviisdev/Loader.git
 cd Loader
 
 if [ -d "$HOME/Loader/hilzu-venv" ] ; then

@@ -12,9 +12,9 @@ from math import ceil
 from typing import List, Callable, Dict, Union, Any
 from uuid import uuid4
 
-from pyrogram import filters, enums
-from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified, MessageIdInvalid
-from pyrogram.types import (
+from hydrogram import filters, enums
+from hydrogram.errors.exceptions.bad_request_400 import MessageNotModified, MessageIdInvalid
+from hydrogram.types import (
     InlineQueryResultArticle, InputTextMessageContent,
     InlineKeyboardMarkup, InlineKeyboardButton,
     CallbackQuery, InlineQuery)
@@ -41,7 +41,7 @@ async def _init() -> None:
         config.Dynamic.USE_USER_FOR_CLIENT_CHECKS = bool(data['is_user'])
 
 
-@userge.on_cmd("help", about={
+@userge.cmd("help", about={
     'header': "Guide to use USERGE commands",
     'flags': {'-i': "open help menu in inline"},
     'usage': "{tr}help [flag] [plugin_name | command_name]",
@@ -449,7 +449,7 @@ if userge.has_bot:
                 input_message_content=InputTextMessageContent(
                     "**Here's how to setup Hilzu**"
                 ),
-                url="https://github.com/fnixdev/Hilzu",
+                url="https://github.com/daviisdev/Hilzu",
                 description="Setup Your Own",
                 thumb_url="https://telegra.ph/file/aa2776cc8f104120d2e4a.jpg",
                 reply_markup=InlineKeyboardMarkup(
@@ -457,10 +457,10 @@ if userge.has_bot:
                         [
                             InlineKeyboardButton(
                                 "Hilzu Repo",
-                                url="https://github.com/fnixdev/Hilzu"),
+                                url="https://github.com/daviisdev/Hilzu"),
                             InlineKeyboardButton(
                                 "Hilzu Loader",
-                                url="https://github.com/fnixdev/Loader")
+                                url="https://github.com/daviisdev/Loader")
                         ]
                     ]
                 )
@@ -475,7 +475,7 @@ if userge.has_bot:
                     input_message_content=InputTextMessageContent(
                         "**Hilzu Main Menu**"
                     ),
-                    url="https://github.com/fnixdev/Hilzu",
+                    url="https://github.com/daviisdev/Hilzu",
                     description="Hilzu Main Menu",
                     thumb_url="https://telegra.ph/file/aa2776cc8f104120d2e4a.jpg",
                     reply_markup=InlineKeyboardMarkup(main_menu_buttons())

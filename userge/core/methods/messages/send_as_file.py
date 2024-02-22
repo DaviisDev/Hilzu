@@ -14,7 +14,7 @@ import inspect
 import io
 from typing import Union, Optional
 
-from pyrogram.parser import Parser
+from hydrogram.parser import Parser
 
 from userge import logging
 from ... import types

@@ -11,7 +11,7 @@
 from userge import userge, Message, config
 
 
-@userge.on_cmd("status", about={
+@userge.cmd("status", about={
     'header': "list plugins, commands, filters status",
     'flags': {
         '-p': "plugin",
@@ -126,7 +126,7 @@ async def status(message: Message) -> None:
     await message.edit(out_str.replace("        ``\n", ''), del_in=0)
 
 
-@userge.on_cmd('load', about={
+@userge.cmd('load', about={
     'header': "load plugins, commands, filters",
     'flags': {
         '-p': "plugin",
@@ -189,7 +189,7 @@ async def load(message: Message) -> None:
     await message.edit(out_str, del_in=0, log=True)
 
 
-@userge.on_cmd('unload', about={
+@userge.cmd('unload', about={
     'header': "unload plugins, commands, filters",
     'flags': {
         '-p': "plugin",
@@ -255,7 +255,7 @@ async def unload(message: Message) -> None:
     await message.edit(out_str, del_in=0, log=True)
 
 
-@userge.on_cmd('reload', about={'header': "Reload all plugins"}, allow_channels=False)
+@userge.cmd('reload', about={'header': "Reload all plugins"}, allow_channels=False)
 async def reload_(message: Message) -> None:
     """ Reload all plugins """
     await message.edit("`Reloading All Plugins`")
@@ -263,7 +263,7 @@ async def reload_(message: Message) -> None:
         f"`Reloaded {await userge.reload_plugins()} Plugins`", del_in=3, log=True)
 
 
-@userge.on_cmd('clear_unloaded', about={'header': "clear saved unloaded data in DB"},
+@userge.cmd('clear_unloaded', about={'header': "clear saved unloaded data in DB"},
                allow_channels=False)
 async def clear_(message: Message) -> None:
     """ clear all save filters in DB """

@@ -13,9 +13,9 @@ __all__ = ['ChannelLogger']
 import asyncio
 from typing import Optional, Union
 
-from pyrogram.errors import ChatWriteForbidden
-from pyrogram.types import Message as RawMessage
-from pyrogram.errors.exceptions import MessageTooLong
+from hydrogram.errors import ChatWriteForbidden
+from hydrogram.types import Message as RawMessage
+from hydrogram.errors.exceptions import MessageTooLong
 
 from userge import config
 from userge.utils import SafeDict, get_file_id_of_media, parse_buttons
@@ -87,8 +87,8 @@ class ChannelLogger:
         """\nforward message to log channel.
 
         Parameters:
-            message (`pyrogram.Message`):
-                pass pyrogram.Message object which want to forward.
+            message (`hydrogram.Message`):
+                pass hydrogram.Message object which want to forward.
 
             name (``str``, *optional*):
                 New Name for logger.
@@ -122,8 +122,8 @@ class ChannelLogger:
         """\nstore message to log channel.
 
         Parameters:
-            message (`pyrogram.Message` | `None`):
-                pass pyrogram.Message object which want to forward.
+            message (`hydrogram.Message` | `None`):
+                pass hydrogram.Message object which want to forward.
 
             caption (`str`, *optional*):
                 Text or Caption of the message to be sent.

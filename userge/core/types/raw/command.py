@@ -13,8 +13,8 @@ __all__ = ['Command']
 import re
 from typing import Union, Dict, List, Callable
 
-from pyrogram import filters, enums
-from pyrogram.types import Message
+from hydrogram import filters, enums
+from hydrogram.types import Message
 
 from userge import config
 from userge.plugins.builtin import sudo

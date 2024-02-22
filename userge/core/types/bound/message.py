@@ -16,12 +16,12 @@ from contextlib import contextmanager
 from datetime import datetime
 from typing import List, Dict, Tuple, Union, Optional, Sequence, Callable, Any
 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message as RawMessage
-from pyrogram.errors import (
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message as RawMessage
+from hydrogram.errors import (
     MessageAuthorRequired, MessageTooLong, MessageNotModified,
     MessageIdInvalid, MessageDeleteForbidden, BotInlineDisabled
 )
-from pyrogram import enums
+from hydrogram import enums
 
 from userge import config
 from userge.utils import is_command

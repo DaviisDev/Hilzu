@@ -12,10 +12,10 @@ __all__ = ['Filter']
 
 from typing import List, Dict, Callable, Any, Optional, Union
 
-from pyrogram import enums
-from pyrogram.filters import Filter as RawFilter
-from pyrogram.handlers import MessageHandler
-from pyrogram.handlers.handler import Handler
+from hydrogram import enums
+from hydrogram.filters import Filter as RawFilter
+from hydrogram.handlers import MessageHandler
+from hydrogram.handlers.handler import Handler
 
 from userge import logging
 from ... import client as _client  # pylint: disable=unused-import

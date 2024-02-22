@@ -8,9 +8,9 @@
 #
 # All rights reserved.
 
-from pyrogram import StopPropagation
-from pyrogram.raw.base import Message
-from pyrogram.raw.types import MessageService, MessageActionContactSignUp
+from hydrogram import StopPropagation
+from hydrogram.raw.base import Message
+from hydrogram.raw.types import MessageService, MessageActionContactSignUp
 
 from userge import userge
 

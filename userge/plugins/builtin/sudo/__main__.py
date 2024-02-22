@@ -10,7 +10,7 @@
 
 import asyncio
 
-from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
+from hydrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
 
 from userge import userge, Message, config, get_collection
 from .. import sudo
@@ -31,7 +31,7 @@ async def _init() -> None:
         sudo.COMMANDS.add(i['_id'])
 
 
-@userge.on_cmd("sudo", about={'header': "enable / disable sudo access"}, allow_channels=False)
+@userge.cmd("sudo", about={'header': "enable / disable sudo access"}, allow_channels=False)
 async def sudo_(message: Message):
     """ enable / disable sudo access """
     if sudo.Dynamic.ENABLED:
@@ -44,7 +44,7 @@ async def sudo_(message: Message):
         {'_id': 'SUDO_ENABLED'}, {"$set": {'data': sudo.Dynamic.ENABLED}}, upsert=True)
 
 
-@userge.on_cmd("addsudo", about={
+@userge.cmd("addsudo", about={
     'header': "add sudo user",
     'usage': "{tr}addsudo [username | reply to msg]"}, allow_channels=False)
 async def add_sudo(message: Message):
@@ -71,7 +71,7 @@ async def add_sudo(message: Message):
             message.edit(f"user : `{user['id']}` added to **SUDO**!", del_in=5, log=__name__))
 
 
-@userge.on_cmd("delsudo", about={
+@userge.cmd("delsudo", about={
     'header': "delete sudo user",
     'flags': {'-all': "remove all sudo users"},
     'usage': "{tr}delsudo [user_id | reply to msg]\n{tr}delsudo -all"}, allow_channels=False)
@@ -103,7 +103,7 @@ async def del_sudo(message: Message):
             message.edit(f"user : `{user_id}` removed from **SUDO**!", del_in=5, log=__name__))
 
 
-@userge.on_cmd("vsudo", about={'header': "view sudo users"}, allow_channels=False)
+@userge.cmd("vsudo", about={'header': "view sudo users"}, allow_channels=False)
 async def view_sudo(message: Message):
     """ view sudo users """
     if not sudo.USERS:
@@ -115,7 +115,7 @@ async def view_sudo(message: Message):
     await message.edit(out_str, del_in=0)
 
 
-@userge.on_cmd("addscmd", about={
+@userge.cmd("addscmd", about={
     'header': "add sudo command",
     'flags': {'-all': "add all commands to sudo"},
     'usage': "{tr}addscmd [command name]\n{tr}addscmd -all"}, allow_channels=False)
@@ -154,7 +154,7 @@ async def add_sudo_cmd(message: Message):
             message.edit(f"cmd : `{cmd}` added to **SUDO**!", del_in=5, log=__name__))
 
 
-@userge.on_cmd("delscmd", about={
+@userge.cmd("delscmd", about={
     'header': "delete sudo commands",
     'flags': {'-all': "remove all sudo commands"},
     'usage': "{tr}delscmd [command name]\n{tr}delscmd -all"}, allow_channels=False)
@@ -179,7 +179,7 @@ async def del_sudo_cmd(message: Message):
             message.edit(f"cmd : `{cmd}` removed from **SUDO**!", del_in=5, log=__name__))
 
 
-@userge.on_cmd("vscmd", about={'header': "view sudo cmds"}, allow_channels=False)
+@userge.cmd("vscmd", about={'header': "view sudo cmds"}, allow_channels=False)
 async def view_sudo_cmd(message: Message):
     """ view sudo cmds """
     if not sudo.COMMANDS:

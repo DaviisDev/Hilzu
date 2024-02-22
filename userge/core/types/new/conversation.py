@@ -15,11 +15,11 @@ import asyncio
 import inspect
 from typing import Union, Dict, Tuple, Optional
 
-from pyrogram import filters as _filters
-from pyrogram.filters import Filter
-from pyrogram.types import Message as RawMessage
-from pyrogram.handlers import MessageHandler
-from pyrogram import enums
+from hydrogram import filters as _filters
+from hydrogram.filters import Filter
+from hydrogram.types import Message as RawMessage
+from hydrogram.handlers import MessageHandler
+from hydrogram import enums
 
 from userge import logging
 from userge.utils.exceptions import StopConversation
@@ -70,7 +70,7 @@ class Conversation:
             mark_read (``bool``, *optional*):
                 marks response as read.
 
-            filters (``pyrogram.filters.Filter``, *optional*):
+            filters (``hydrogram.filters.Filter``, *optional*):
                 filter specific response.
 
         Returns:

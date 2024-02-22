@@ -14,8 +14,8 @@ import inspect
 import asyncio
 from typing import Optional, Union, List
 
-from pyrogram import enums
-from pyrogram.types import InlineKeyboardMarkup, MessageEntity
+from hydrogram import enums
+from hydrogram.types import InlineKeyboardMarkup, MessageEntity
 
 from userge import config
 from ...ext import RawClient
@@ -68,7 +68,7 @@ class EditMessageText(RawClient):  # pylint: disable=missing-class-docstring
                 Pass "html" to enable HTML-style parsing only.
                 Pass None to completely disable style parsing.
 
-            entities (List of :obj:`~pyrogram.types.MessageEntity`):
+            entities (List of :obj:`~hydrogram.types.MessageEntity`):
                 List of special entities that appear in message text,
                 which can be specified instead of *parse_mode*.
 

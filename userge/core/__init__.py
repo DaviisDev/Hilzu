@@ -8,7 +8,7 @@
 #
 # All rights reserved.
 
-from pyrogram import filters  # noqa
+from hydrogram import filters  # noqa
 
 from .database import get_collection  # noqa
 from .ext import pool  # noqa

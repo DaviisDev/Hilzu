@@ -12,7 +12,7 @@ import time
 from math import floor
 from typing import Dict, Tuple
 
-from pyrogram.errors.exceptions import FloodWait
+from hydrogram.errors.exceptions import FloodWait
 
 import userge
 from .tools import humanbytes, time_formatter

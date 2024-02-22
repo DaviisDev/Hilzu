@@ -15,10 +15,10 @@ import inspect
 from datetime import datetime
 from typing import Optional, Union, List
 
-from pyrogram.types import (
+from hydrogram.types import (
     InlineKeyboardMarkup, ReplyKeyboardMarkup,
     ReplyKeyboardRemove, ForceReply, MessageEntity)
-from pyrogram import enums
+from hydrogram import enums
 
 from userge import config
 from ... import types
@@ -73,7 +73,7 @@ class SendMessage(RawClient):  # pylint: disable=missing-class-docstring
                 Pass "html" to enable HTML-style parsing only.
                 Pass None to completely disable style parsing.
 
-            entities (List of :obj:`~pyrogram.types.MessageEntity`):
+            entities (List of :obj:`~hydrogram.types.MessageEntity`):
                 List of special entities that appear in message text,
                 which can be specified instead of *parse_mode*.
 

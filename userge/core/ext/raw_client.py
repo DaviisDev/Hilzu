@@ -15,11 +15,11 @@ from math import floor
 from typing import Optional, Dict, List
 from time import time, perf_counter, sleep
 
-import pyrogram.raw.functions as funcs
-import pyrogram.raw.types as types
-from pyrogram import Client
-from pyrogram.session import Session
-from pyrogram.raw.core import TLObject
+import hydrogram.raw.functions as funcs
+import hydrogram.raw.types as types
+from hydrogram import Client
+from hydrogram.session import Session
+from hydrogram.raw.core import TLObject
 
 import userge  # pylint: disable=unused-import
 

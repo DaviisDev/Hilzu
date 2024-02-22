@@ -19,9 +19,9 @@ from os.path import basename, join, exists
 from typing import Tuple, List, Optional, Iterator, Union, Any
 from telegraph import upload_file
 
-from pyrogram import emoji
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, User
-from pyrogram import enums
+from hydrogram import emoji
+from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, User
+from hydrogram import enums
 
 import userge
 

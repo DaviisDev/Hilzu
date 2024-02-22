@@ -17,10 +17,10 @@ from traceback import format_exc
 from functools import partial
 from typing import List, Dict, Union, Any, Callable, Optional, Awaitable
 
-from pyrogram import StopPropagation, ContinuePropagation, enums
-from pyrogram.filters import Filter as RawFilter
-from pyrogram.types import Message as RawMessage, ChatMember
-from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UserNotParticipant
+from hydrogram import StopPropagation, ContinuePropagation, enums
+from hydrogram.filters import Filter as RawFilter
+from hydrogram.types import Message as RawMessage, ChatMember
+from hydrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UserNotParticipant
 
 from userge import logging, config
 from userge.plugins.builtin import sudo, system

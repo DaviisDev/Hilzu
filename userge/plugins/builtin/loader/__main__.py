@@ -16,7 +16,7 @@ from userge.versions import get_version
 CHANNEL = userge.getCLogger(__name__)
 
 
-@userge.on_cmd("core", about={
+@userge.cmd("core", about={
     'header': "view or manage the core repository",
     'flags': {
         '-f': "fetch core repo",
@@ -118,7 +118,7 @@ async def core(message: Message):
         await message.edit(out, del_in=0, disable_web_page_preview=True)
 
 
-@userge.on_cmd("repos", about={
+@userge.cmd("repos", about={
     'header': "view or manage plugins repositories",
     'flags': {
         '-f': "fetch one or all plugins repos",
@@ -260,7 +260,7 @@ async def repos(message: Message):
             await message.err("invalid flags")
 
 
-@userge.on_cmd("addrepo", about={
+@userge.cmd("addrepo", about={
     'header': "add a plugins repo",
     'flags': {
         '-b': "branch name (optional|default master)",
@@ -268,9 +268,9 @@ async def repos(message: Message):
     'usage': "{tr}addrepo [flags] url",
     'others': "plugins of higher priority repos will override plugins of low priority repos",
     'examples': [
-        "{tr}addrepo https://github.com/fnixdev/UsergeModules",
-        "{tr}addrepo -b=master https://github.com/fnixdev/UsergeModules",
-        "{tr}addrepo -b=master -p=1 https://github.com/fnixdev/UsergeModules"]
+        "{tr}addrepo https://github.com/daviisdev/UsergeModules",
+        "{tr}addrepo -b=master https://github.com/daviisdev/UsergeModules",
+        "{tr}addrepo -b=master -p=1 https://github.com/daviisdev/UsergeModules"]
 }, del_pre=True, allow_channels=False)
 async def add_repo(message: Message):
     """ add a plugins repo """
@@ -295,7 +295,7 @@ async def add_repo(message: Message):
 
 
 
-@userge.on_cmd("rmrepo", about={
+@userge.cmd("rmrepo", about={
     'header': "remove a plugins repo",
     'flags': {'-id': "plugins repo id (grab using {tr}repos)"},
     'usage': "{tr}rmrepo [flag]",
@@ -318,7 +318,7 @@ async def rm_repo(message: Message):
         await message.edit("```couldn't find that repo```", del_in=3)
 
 
-@userge.on_cmd("consts", about={
+@userge.cmd("consts", about={
     'header': "view all constraints",
     'usage': "{tr}consts"}, del_pre=True, allow_channels=False)
 async def consts(message: Message):
@@ -337,7 +337,7 @@ async def consts(message: Message):
     await message.edit_or_send_as_file(out, del_in=0)
 
 
-@userge.on_cmd("addconsts", about={
+@userge.cmd("addconsts", about={
     'header': "add constraints",
     'description': "can ignore plugins, categories or even them from specific repos easily",
     'flags': {'-type': "constraints type (include|exclude|in)"},
@@ -374,7 +374,7 @@ async def add_consts(message: Message):
         await message.edit("<pre>didn't add anything</pre>", del_in=3)
 
 
-@userge.on_cmd("rmconsts", about={
+@userge.cmd("rmconsts", about={
     'header': "remove constraints",
     'description': "if the type is provided, "
                    "then the constraints only in this type will be removed",
@@ -411,7 +411,7 @@ async def rm_consts(message: Message):
         await message.edit("<pre>didn't remove anything</pre>", del_in=3)
 
 
-@userge.on_cmd("clrconsts", about={
+@userge.cmd("clrconsts", about={
     'header': "clear constraints",
     'description': "if the type is provided, "
                    "then the constraints only in this type will be cleared",
@@ -440,7 +440,7 @@ async def clr_consts(message: Message):
         await message.edit("<pre>nothing found to clear</pre>", del_in=3)
 
 
-@userge.on_cmd("update", about={
+@userge.cmd("update", about={
     'header': "Check Updates or Update Userge",
     'description': "use {tr}core and {tr}repos, "
                    "if you want more advanced control over version controlling",

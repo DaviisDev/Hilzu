@@ -10,8 +10,8 @@
 
 __all__ = ['OnLeftMember']
 
-from pyrogram import filters
-from pyrogram.filters import Filter as RawFilter
+from hydrogram import filters
+from hydrogram.filters import Filter as RawFilter
 
 from . import RawDecorator
 
@@ -26,7 +26,7 @@ class OnLeftMember(RawDecorator):  # pylint: disable=missing-class-docstring
         """\nDecorator for handling left members
 
         Parameters:
-            leaving_chats (:obj:`~pyrogram.filters.chat`):
+            leaving_chats (:obj:`~hydrogram.filters.chat`):
                 Pass filters.chat to allow only a subset of
                 messages to be passed in your function.
 

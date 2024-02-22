@@ -33,7 +33,7 @@ echo "[✔] - All packages are properly installed."
 cd ~
 echo "[★] - Cloning Loader"
 
-git clone https://github.com/fnixdev/Loader.git
+git clone https://github.com/daviisdev/Loader.git
 cd Loader
 
 echo "[★] - Installing requirements"

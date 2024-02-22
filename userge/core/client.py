@@ -22,8 +22,8 @@ from contextlib import suppress
 from types import ModuleType
 from typing import List, Awaitable, Any, Optional, Union
 
-from pyrogram import types
-from pyrogram.methods import Methods as RawMethods
+from hydrogram import types
+from hydrogram.methods import Methods as RawMethods
 
 from userge import logging, config
 from userge.utils import time_formatter
